@@ -11,7 +11,6 @@ import androidx.camera.core.ImageCapture
 import androidx.camera.video.Recorder
 import androidx.camera.video.Recording
 import androidx.camera.video.VideoCapture
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -24,7 +23,6 @@ import android.util.Log
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.ImageProxy
-import androidx.camera.video.FallbackStrategy
 import androidx.camera.video.MediaStoreOutputOptions
 import androidx.camera.video.Quality
 import androidx.camera.video.QualitySelector
@@ -46,6 +44,8 @@ class MainActivity : AppCompatActivity() {
     private var recording: Recording? = null
 
     private lateinit var cameraExecutor: ExecutorService
+    private var flashMode = ImageCapture.FLASH_MODE_OFF
+    private var cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,6 +60,8 @@ class MainActivity : AppCompatActivity() {
 
         viewBinding.imageCaptureButton.setOnClickListener { takePhoto() }
         viewBinding.videoCaptureButton.setOnClickListener { captureVideo() }
+        viewBinding.flashButton.setOnClickListener { changeFlashOnClick() }
+        viewBinding.rotateButton.setOnClickListener { rotateCamera() }
 
         cameraExecutor = Executors.newSingleThreadExecutor()
     }
@@ -184,7 +186,7 @@ class MainActivity : AppCompatActivity() {
                 .build()
             videoCapture = VideoCapture.withOutput(recorder)
 
-            imageCapture = ImageCapture.Builder().build()
+            imageCapture = ImageCapture.Builder().setFlashMode(flashMode).build()
             val imageAnalyzer = ImageAnalysis.Builder()
                 .build()
                 .also {
@@ -192,8 +194,6 @@ class MainActivity : AppCompatActivity() {
                         Log.d(TAG, "Average luminosity: $luma")
                     })
                 }
-
-            val cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
 
             try {
                 cameraProvider.unbindAll()
@@ -206,6 +206,29 @@ class MainActivity : AppCompatActivity() {
             }
 
         }, ContextCompat.getMainExecutor(this))
+    }
+
+    private fun changeFlashOnClick(){
+        if (flashMode == ImageCapture.FLASH_MODE_OFF) {
+            flashMode = ImageCapture.FLASH_MODE_ON
+            viewBinding.flashButton.text = getString(R.string.flash_on)
+        } else if (flashMode == ImageCapture.FLASH_MODE_ON) {
+            flashMode = ImageCapture.FLASH_MODE_AUTO
+            viewBinding.flashButton.text = getString(R.string.flash_auto)
+        } else {
+            flashMode = ImageCapture.FLASH_MODE_OFF
+            viewBinding.flashButton.text = getString(R.string.flash_off)
+        }
+        imageCapture?.flashMode = flashMode
+    }
+
+    private fun rotateCamera() {
+        if (cameraSelector == CameraSelector.DEFAULT_BACK_CAMERA) {
+            cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
+        } else {
+            cameraSelector = CameraSelector.DEFAULT_BACK_CAMERA
+        }
+        startCamera()
     }
 
     private fun requestPermissions() {
