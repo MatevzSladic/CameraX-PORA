@@ -53,4 +53,4 @@ dependencies {
 
 ## Primer aplikacije
 
-![CameraX app demo](CameraX-Demo-PORA.jpg)
+<img src="CameraX-Demo-PORA.jpg" alt="CameraX app demo" width="50%"/>
