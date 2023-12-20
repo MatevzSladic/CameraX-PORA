@@ -1,5 +1,5 @@
 # [CameraX](https://developer.android.com/training/camerax) :camera:
-**CameraX** je Jetpack knjižnjica namenjena poenostavljeni implementaciji uporabe kamere za različne namene v Android aplikacijah.
+**CameraX** je Jetpack knjižnjica namenjena poenostavljeni implementaciji uporabe kamere za različne namene v ANDROID (ne pa tudi IOS) aplikacijah. Razvili so jo in jo še vedmo razvijajo Googlovi razvijalci. 
 
 ## Zakaj CAMView?
 Knjižnjica omogoča enostavno implementacijo uporabe kamere v lastni aplikaciji. Knjižnjica ponuja predpripravljen API, ki ponuja komaptibilnost vse od OS Android 5.0.
@@ -13,12 +13,12 @@ Knjižnjica je zasnovana tako, da razvijalcu poenostavi integracijo kamere v las
 
 ## Prednosti in slabosti
 
-| PREDNOSTI :heavy_plus_sign:                                                 | SLABOSTI :heavy_minus_sign:                                                                        |
-|-----------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
-| Enostvana implementacija knjižnjice v svojo aplikacijo.                     | Manjka skeniranje črtnih in QR kod.                                                                |
-| Enostavna uporaba kamere za zajem slik in videoposnetkov ter analize slike. | Naprednejšim razvijalcem morda preveč poenostavljena kalupasta oblika. Za te bolj primerna Camera2 |
-| Redno posodabljanje knjižnjice.                                             |                                                                                                    |
-| Nenehno testiranje kompatibilnosti knjižnjice z novimi napravami.           |
+| PREDNOSTI :heavy_plus_sign:                                                 | SLABOSTI :heavy_minus_sign:                                                                                                             |
+|-----------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| Enostvana implementacija knjižnjice v svojo aplikacijo.                     | Manjka direktna implementacija skeniranja in prepoznavanja črtnih in QR kod.                                                            |
+| Enostavna uporaba kamere za zajem slik in videoposnetkov ter analize slike. | Naprednejšim razvijalcem morda preveč poenostavljena kalupasta oblika. Za te bolj primerna Camera2.                                     |
+| Redno posodabljanje knjižnjice.                                             | Ni mogoč zajem posnetkov z 120FPS+ in slow-motion.                                                                                      |
+| Nenehno testiranje kompatibilnosti knjižnjice z novimi napravami.           | Ne podpira multi-cams (več kamer in premikanje med njimi - zoom), menjavanje sprednja/zadnja kamera med snemanjem ni mogoče (trenutno). |
 
 ## [Licenca](https://source.android.com/license) :page_with_curl:
 Knjižnjica je licencirana pod Apache 2.0 licenco, kot večina drugih odprtokodnih android knjižnjic. 
@@ -53,4 +53,4 @@ dependencies {
 
 ## Primer aplikacije
 
-![CameraX app demo](CameraX-Demo-PORA.jpg)
+<img src="CameraX-Demo-PORA.jpg" alt="CameraX app demo" width="50%"/>
