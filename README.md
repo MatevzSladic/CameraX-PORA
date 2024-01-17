@@ -1,7 +1,7 @@
 # [CameraX](https://developer.android.com/training/camerax) :camera:
 **CameraX** je Jetpack knjižnjica namenjena poenostavljeni implementaciji uporabe kamere za različne namene v ANDROID (ne pa tudi IOS) aplikacijah. Razvili so jo in jo še vedmo razvijajo Googlovi razvijalci. 
 
-## Zakaj CAMView?
+## Zakaj CameraX?
 Knjižnjica omogoča enostavno implementacijo uporabe kamere v lastni aplikaciji. Knjižnjica ponuja predpripravljen API, ki ponuja komaptibilnost vse od OS Android 5.0.
 S tem pokrije okoli 98% vseh aktivnih Android naprav (glede na podatke iz leta 2023). Knjižnjica omogoča:
 1. Direkten predogled slike s kamere;
