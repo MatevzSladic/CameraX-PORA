@@ -54,3 +54,11 @@ dependencies {
 ## Primer aplikacije
 
 <img src="CameraX-Demo-PORA.jpg" alt="CameraX app demo" width="50%"/>
+
+## Implementacija v projekt
+
+<img src="CameraX_in_project1.png" alt="CameraX in project: 1" width="50%"/>
+
+<img src="CameraX_in_project2.png" alt="CameraX in project: 2" width="50%"/>
+
+<img src="CameraX_in_project3.png" alt="CameraX in project: 3" width="50%"/>
